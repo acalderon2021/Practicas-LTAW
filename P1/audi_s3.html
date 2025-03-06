@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audi S3 8L</title>
+    <link rel="stylesheet" href="styles_cars.css">
+    <script>
+        let imagenes = ["s3_1.jpg", "s3_2.jpg", "s3_3.jpg", "s3_4.jpg", "s3_5.jpg", "s3_6.jpg", "s3_7.jpg", "s3_8.jpg", "s3_9.jpg","s3_10.jpg", "s3_11.jpg","s3_12.jpg", "s3_13.jpg", "s3_14.jpg"];
+        let indice = 0;
+        
+        function cambiarImagen(direccion) {
+        indice = (indice + direccion + imagenes.length) % imagenes.length;
+        document.getElementById("visor").src = imagenes[indice];
+        }
+
+        function abrirFullscreen() {
+            let fullscreenDiv = document.createElement("div");
+            fullscreenDiv.classList.add("fullscreen");
+            fullscreenDiv.onclick = () => document.body.removeChild(fullscreenDiv);
+
+            let img = document.createElement("img");
+            img.src = imagenes[indice];
+            fullscreenDiv.appendChild(img);
+
+            document.body.appendChild(fullscreenDiv);
+        }
+
+        document.getElementById("visor").addEventListener("click", abrirFullscreen);
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Audi S3 8L</h1>
+    </header>
+    <main class="contenido">
+        <div class="visor">
+            <button onclick="cambiarImagen(-1)">&#9665;</button>
+            <img id="visor" src="s3_1.jpg" alt="Audi S3">
+            <button onclick="cambiarImagen(1)">&#9655;</button>
+        </div>
+        <div class="info">
+            <h2>Descripción</h2>
+            <p>El Audi S3 8L es un hatchback deportivo compacto con tracción quattro y un motor 1.8 turbo de 225 CV.</p>
+            <h2>Especificaciones</h2>
+            <ul>
+                <li>Motor: 1.8 Turbo 4 cilindros</li>
+                <li>Potencia: 225 CV</li>
+                <li>Tracción: Quattro</li>
+                <li>Transmisión: Manual 6 velocidades</li>
+                <li>Aceleración 0-100 km/h: 6.6 segundos</li>
+            </ul>
+        </div>
+    </main>
+</body>
+</html>
