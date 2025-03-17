@@ -3,54 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Audi S3 8L</title>
-    <link rel="stylesheet" href="styles_cars.css">
-    <script>
-        let imagenes = ["s3_1.jpg", "s3_2.jpg", "s3_3.jpg", "s3_4.jpg", "s3_5.jpg", "s3_6.jpg", "s3_7.jpg", "s3_8.jpg", "s3_9.jpg","s3_10.jpg", "s3_11.jpg","s3_12.jpg", "s3_13.jpg", "s3_14.jpg"];
-        let indice = 0;
-        
-        function cambiarImagen(direccion) {
-        indice = (indice + direccion + imagenes.length) % imagenes.length;
-        document.getElementById("visor").src = imagenes[indice];
+    <title>Venta de Coche</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px auto;
         }
-
-        function abrirFullscreen() {
-            let fullscreenDiv = document.createElement("div");
-            fullscreenDiv.classList.add("fullscreen");
-            fullscreenDiv.onclick = () => document.body.removeChild(fullscreenDiv);
-
-            let img = document.createElement("img");
-            img.src = imagenes[indice];
-            fullscreenDiv.appendChild(img);
-
-            document.body.appendChild(fullscreenDiv);
+        .images {
+            flex: 1;
+            padding-right: 20px;
+            position: relative;
         }
-
-        document.getElementById("visor").addEventListener("click", abrirFullscreen);
-    </script>
+        .images img {
+            width: 100%;
+            border-radius: 10px;
+            border-bottom: 2px solid #990000;
+            display: none;
+        }
+        .images img.active {
+            display: block;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .info {
+            flex: 1;
+            text-align: left;
+        }
+        .info h2 {
+            color: #990000;
+        }
+        .info p {
+            font-size: 18px;
+            color: #333;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            background: #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <h1>Audi S3 8L</h1>
+        <img src="audi-letras.png" alt="Logo Audi">
+        <div class="texto">Venta de Coches: Audi S3 8L</div>
     </header>
-    <main class="contenido">
-        <div class="visor">
-            <button onclick="cambiarImagen(-1)">&#9665;</button>
-            <img id="visor" src="s3_1.jpg" alt="Audi S3">
-            <button onclick="cambiarImagen(1)">&#9655;</button>
+    <div class="container">
+        <div class="images">
+            <img src="s3_1.jpg" alt="Imagen 1" class="active">
+            <img src="s3_2.jpg" alt="Imagen 2">
+            <img src="s3_3.jpg" alt="Imagen 3">
+            <img src="s3_4.jpg" alt="Imagen 4">
+            <img src="s3_5.jpg" alt="Imagen 5">
+            <img src="s3_6.jpg" alt="Imagen 6">
+            <img src="s3_7.jpg" alt="Imagen 7">
+            <img src="s3_8.jpg" alt="Imagen 8">
+            <img src="s3_9.jpg" alt="Imagen 9">
+            <img src="s3_10.jpg" alt="Imagen 10">
+            <img src="s3_11.jpg" alt="Imagen 11">
+            <img src="s3_12.jpg" alt="Imagen 12">
+            <img src="s3_13.jpg" alt="Imagen 13">
+            <img src="s3_14.jpg" alt="Imagen 14">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
         </div>
         <div class="info">
-            <h2>Descripción</h2>
-            <p>El Audi S3 8L es un hatchback deportivo compacto con tracción quattro y un motor 1.8 turbo de 225 CV.</p>
-            <h2>Especificaciones</h2>
-            <ul>
-                <li>Motor: 1.8 Turbo 4 cilindros</li>
-                <li>Potencia: 225 CV</li>
-                <li>Tracción: Quattro</li>
-                <li>Transmisión: Manual 6 velocidades</li>
-                <li>Aceleración 0-100 km/h: 6.6 segundos</li>
-            </ul>
+            <h2>Audi S3 8L</h2>
+            <p>Precio: 10.000 €</p>
+            <p>El Audi S3 8L es uno de los primeros compactos deportivos de la historia. El coche tiene la elegancia de un coche de calle y la deportividad de un coche de carreras. Su diseño, pese a tener casi 3 décadas de antigüedad, sigue siendo innovador a día de hoy. </p>
+            <div class="features">
+                <h3>Características:</h3>
+                <ul>
+                    <li>Año 2001-2003</li>
+                    <li>Motor 1.8T</li>
+                    <li>Transmisión manual de 6 velocidades</li>
+                    <li>Tracción Quattro por pérdida de agarre (Haldex)</li>
+                    <li>Potencia: 225 CV</li>
+                    <li>Frenos ABS y control de estabilidad</li>
+                </ul>
+            </div>
         </div>
-    </main>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.images img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
 </body>
 </html>

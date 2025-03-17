@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Coche</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+        .images {
+            flex: 1;
+            padding-right: 20px;
+            position: relative;
+        }
+        .images img {
+            width: 100%;
+            border-radius: 10px;
+            border-bottom: 2px solid #990000;
+            display: none;
+        }
+        .images img.active {
+            display: block;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .info {
+            flex: 1;
+            text-align: left;
+        }
+        .info h2 {
+            color: #990000;
+        }
+        .info p {
+            font-size: 18px;
+            color: #333;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            background: #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="audi-letras.png" alt="Logo Audi">
+        <div class="texto">Venta de Coches: Audi S1 Grupo B</div>
+    </header>
+    <div class="container">
+        <div class="images">
+            <img src="s1_1.jpg" alt="Imagen 1" class="active">
+            <img src="s1_2.jpg" alt="Imagen 2">
+            <img src="s1_3.jpg" alt="Imagen 3">
+            <img src="s1_4.jpg" alt="Imagen 4">
+            <img src="s1_5.jpg" alt="Imagen 5">
+            <img src="s1_6.jpg" alt="Imagen 6">
+            <img src="s1_7.jpg" alt="Imagen 7">
+            <img src="s1_8.jpg" alt="Imagen 8">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+        <div class="info">
+            <h2>Audi S1 Grupo B</h2>
+            <p>Precio: +150.000 €</p>
+            <p>El Audi S1 del Grupo B es uno de los coches más míticos de la historia de los rallys. Su motor 5 cilindros turboalimentado y su tracción integral Quattro hicieron de él una bestia indomable durante los campeonatos de los años 80. A día de hoy es prácticamente imposible conseguir una unidad de este coche. Era tal su potencial que se le apodaba "ataúd con ruedas". Era capaz de acelerar de 0 a 100 Km/H sobre tierra en el mismo tiempo que un super deportivo en asfalto.</p>
+            <div class="features">
+                <h3>Características:</h3>
+                <ul>
+                    <li>Año 1984-1986</li>
+                    <li>Motor 2.1 Turbo 5 Cilindros</li>
+                    <li>Transmisión manual de 5 velocidades</li>
+                    <li>Tracción integral (Quattro)</li>
+                    <li>Potencia: 300-600 CV (dependiendo de la versión)</li>
+                    <li>Suspensión deportiva de rally y frenos de alto rendimiento</li>
+                    <li>Diseño agresivo con aerodinámica avanzada</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.images img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Coche</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+        .images {
+            flex: 1;
+            padding-right: 20px;
+            position: relative;
+        }
+        .images img {
+            width: 100%;
+            border-radius: 10px;
+            border-bottom: 2px solid #990000;
+            display: none;
+        }
+        .images img.active {
+            display: block;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .info {
+            flex: 1;
+            text-align: left;
+        }
+        .info h2 {
+            color: #990000;
+        }
+        .info p {
+            font-size: 18px;
+            color: #333;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            background: #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="audi-letras.png" alt="Logo Audi">
+        <div class="texto">Venta de Coches: Audi S4 Avant C4</div>
+    </header>
+    <div class="container">
+        <div class="images">
+            <img src="s4avant_1.jpg" alt="Imagen 1" class="active">
+            <img src="s4avant_2.jpg" alt="Imagen 2">
+            <img src="s4avant_3.jpg" alt="Imagen 3">
+            <img src="s4avant_4.jpg" alt="Imagen 4">
+            <img src="s4avant_5.jpg" alt="Imagen 5">
+            <img src="s4avant_6.jpg" alt="Imagen 6">
+            <img src="s4avant_7.jpg" alt="Imagen 7">
+            <img src="s4avant_8.jpg" alt="Imagen 8">
+            <img src="s4avant_9.jpg" alt="Imagen 9">
+            <img src="s4avant_10.jpg" alt="Imagen 10">
+            <img src="s4avant_11.jpg" alt="Imagen 11">
+            <img src="s4avant_12.jpg" alt="Imagen 12">
+            <img src="s4avant_13.jpg" alt="Imagen 13">
+            <img src="s4avant_14.jpg" alt="Imagen 14">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+        <div class="info">
+            <h2>Audi S4 Avant C4</h2>
+            <p>Precio: 25000 €</p>
+            <p>El Audi S4 Avant C4 es una versión deportiva de la serie 100, coche familiar con rendimiento deportivo. Con tracción integral, motor V6 turbo y un diseño elegante y discreto, este coche combina estilo, confort y potencia.</p>
+            <div class="features">
+                <h3>Características:</h3>
+                <ul>
+                    <li>Año 1991-1994</li>
+                    <li>Motor V6 2.2 Turbo</li>
+                    <li>Transmisión manual de 5 velocidades</li>
+                    <li>Tracción integral (Quattro)</li>
+                    <li>Potencia: 230 CV</li>
+                    <li>Suspensión deportiva y frenos ABS</li>
+                    <li>Asientos de cuero, climatizador y detalles en madera</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.images img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>

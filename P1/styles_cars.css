@@ -16,29 +16,31 @@ header {
 
 .contenido {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-between;
     align-items: flex-start;
     padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .visor {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     position: relative;
+    width: 50%;
 }
 
 .visor img {
-    width: 400px;
-    height: 300px;
+    width: 100%;
+    max-width: 500px;
+    height: 350px;
     object-fit: cover;
     border-radius: 10px;
-    margin: 0 10px;
     cursor: pointer;
 }
 
@@ -50,6 +52,7 @@ header {
     cursor: pointer;
     font-size: 20px;
     border-radius: 5px;
+    margin: 10px;
 }
 
 .visor button:hover {
@@ -77,8 +80,11 @@ header {
 }
 
 .info {
-    max-width: 400px;
+    width: 45%;
     padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
     text-align: left;
 }
 

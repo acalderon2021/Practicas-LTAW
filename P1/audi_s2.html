@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Venta de Coche</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .container {
+            display: flex;
+            width: 80%;
+            max-width: 900px;
+            background: white;
+            padding: 20px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 20px auto;
+        }
+        .images {
+            flex: 1;
+            padding-right: 20px;
+            position: relative;
+        }
+        .images img {
+            width: 100%;
+            border-radius: 10px;
+            border-bottom: 2px solid #990000;
+            display: none;
+        }
+        .images img.active {
+            display: block;
+        }
+        .prev, .next {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50%;
+        }
+        .prev {
+            left: 10px;
+        }
+        .next {
+            right: 10px;
+        }
+        .info {
+            flex: 1;
+            text-align: left;
+        }
+        .info h2 {
+            color: #990000;
+        }
+        .info p {
+            font-size: 18px;
+            color: #333;
+        }
+        .features ul {
+            list-style: none;
+            padding: 0;
+        }
+        .features li {
+            background: #ddd;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="audi-letras.png" alt="Logo Audi">
+        <div class="texto">Venta de Coches: Audi S2</div>
+    </header>
+    <div class="container">
+        <div class="images">
+            <img src="s2_1.jpg" alt="Imagen 1" class="active">
+            <img src="s2_2.jpg" alt="Imagen 2">
+            <img src="s2_3.jpg" alt="Imagen 3">
+            <img src="s2_4.jpg" alt="Imagen 4">
+            <img src="s2_5.jpg" alt="Imagen 5">
+            <img src="s2_6.jpg" alt="Imagen 6">
+            <img src="s2_7.jpg" alt="Imagen 7">
+            <img src="s2_8.jpg" alt="Imagen 8">
+            <img src="s2_9.jpg" alt="Imagen 9">
+            <img src="s2_10.jpg" alt="Imagen 10">
+            <img src="s2_11.jpg" alt="Imagen 11">
+            <img src="s2_12.jpg" alt="Imagen 12">
+            <img src="s2_13.jpg" alt="Imagen 13">
+            <img src="s2_14.jpg" alt="Imagen 14">
+            <button class="prev">&#10094;</button>
+            <button class="next">&#10095;</button>
+        </div>
+        <div class="info">
+            <h2>Audi S2</h2>
+            <p>Precio: 12000 €</p>
+            <p>El Audi S2 es un coche para calle, pero con personalidad de Rally. Fue desarrollado a partir de los coches del famoso Grupo B. Con una tracción integral, una caja de 5 velocidades, y un motor turbo de 5 cilindros con un sonido precioso, este coche se teletransportará directamente a los años 90.</p>
+            <div class="features">
+                <h3>Características:</h3>
+                <ul>
+                    <li>Año 1990-1994</li>
+                    <li>Motor 2.2 Turbo 5 Cilindros</li>
+                    <li>Transmisión manual de 5 velocidades</li>
+                    <li>Tracción integral (Quattro)</li>
+                    <li>Potencia: 220 CV</li>
+                    <li>Frenos ABS y control de tracción</li>
+                    <li>Asientos de cuero y detalles en aluminio</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentIndex = 0;
+        const images = document.querySelectorAll('.images img');
+        const prevButton = document.querySelector('.prev');
+        const nextButton = document.querySelector('.next');
+
+        function showImage(index) {
+            images.forEach((img, i) => {
+                img.classList.remove('active');
+                if (i === index) {
+                    img.classList.add('active');
+                }
+            });
+        }
+
+        prevButton.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            showImage(currentIndex);
+        });
+
+        nextButton.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            showImage(currentIndex);
+        });
+    </script>
+</body>
+</html>
