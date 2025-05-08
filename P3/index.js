@@ -1,6 +1,13 @@
-const boton = document.getElementById("boton");
-const body = document.body;
-
-boton.addEventListener("click", () => {
-    body.style.backgroundColor = (body.style.backgroundColor === "green") ? "lightblue" : "green";
-});
+document.addEventListener("DOMContentLoaded", () => {
+    const bgColorInput = document.getElementById("bgColor");
+    const textColorInput = document.getElementById("textColor");
+  
+    function actualizarEstilos() {
+      document.body.style.backgroundColor = bgColorInput.value;
+      document.body.style.color = textColorInput.value;
+    }
+  
+    bgColorInput.addEventListener("input", actualizarEstilos);
+    textColorInput.addEventListener("input", actualizarEstilos);
+  });
+  

@@ -1,27 +1,44 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Mini Chat</title>
 
-  <link rel="stylesheet" href="index.css">
-
+  <link rel="stylesheet" href="index.css" />
   <script src="/socket.io/socket.io.js"></script>
   <script src="index.js" defer></script>
   <script src="chat-client.js" defer></script>
 </head>
 <body>
-  <img src="logo-urjc.png" alt="Logo URJC">
-  <h1>Bienvenido al Mini Chat</h1>
+  <header>
+    <img src="logo-urjc.png" alt="Logo URJC" />
+    <h1>Bienvenido al chat privado de la URJC</h1>
+  </header>
 
-  <p>Haz clic para cambiar el color de fondo:</p>
-  <button id="boton">Cambiar Color</button>
+  <main>
+    <!-- Lista de usuarios conectados -->
+    <aside id="userListContainer">
+      <div id="user_list"></div>
+    </aside>
 
-  <h2>Chat en tiempo real</h2>
-  <input type="text" placeholder="Escribe aquí los mensajes..." autocomplete="off" id="msg_entry">
-  <h3>Mensajes recibidos</h3>
-  <div id="display"></div>
+    <!-- Zona de chat -->
+    <section id="chatContainer">
+      <h2>Chat en tiempo real</h2>
+      <input type="text" placeholder="Escribe aquí los mensajes..." autocomplete="off" id="msg_entry" />
+      <div id="display"></div>
+      <div id="typing_notice" style="font-style: italic; color: gray; margin-top: 5px;"></div>
+    </section>
+
+    <!-- Personalización -->
+    <aside id="configContainer">
+      <h3>🎨 Personaliza tu chat</h3>
+      <label for="bgColor">Color de fondo:</label><br />
+      <input type="color" id="bgColor" value="#e7f0fa" /><br />
+      <label for="textColor">Color del texto:</label><br />
+      <input type="color" id="textColor" value="#000000" />
+    </aside>
+  </main>
 </body>
 </html>

@@ -1,31 +1,89 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto");
 
 body {
-    background-color: lightblue;
-    font-family: "Roboto", sans-serif;
-    font-size: 20px;
-    text-align: center;
-    padding: 50px;
-    transition: background-color 0.5s ease;
+  margin: 0;
+  padding: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  background-color: #e7f0fa;
+  color: #000;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
-button {
-    font-size: 18px;
-    padding: 10px 20px;
-    margin: 20px;
-    border-radius: 8px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0;
+  background-color: #ffffff;
+  border-bottom: 1px solid #ccc;
 }
 
-button:hover {
-    background-color: #0056b3;
+header img {
+  width: 180px;
+  margin-right: 20px;
 }
 
-img {
-    max-width: 150px;
-    margin-bottom: 20px;
+main {
+  display: flex;
+  flex: 1;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+aside#userListContainer {
+  width: 20%;
+  padding-right: 20px;
+  border-right: 1px solid #ccc;
+}
+
+aside#configContainer {
+  width: 20%;
+  padding-left: 20px;
+  border-left: 1px solid #ccc;
+}
+
+section#chatContainer {
+  flex: 1;
+  padding: 0 20px;
+}
+
+#display {
+  height: 300px;
+  overflow-y: auto;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  padding: 10px;
+  margin-top: 10px;
+  text-align: left;
+  border-radius: 8px;
+}
+
+#msg_entry {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  margin-top: 10px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+button,
+input[type="color"] {
+  font-size: 16px;
+  margin: 5px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #aaa;
+}
+
+ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#user_list li {
+  margin: 4px 0;
 }
