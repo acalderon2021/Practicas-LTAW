@@ -1,58 +1,50 @@
-//-- Cargar el módulo de electron
+//-- Cargar módulos
 const electron = require('electron');
+const path = require('path');
+const ip = require('ip');
+
+//-- Variable global para la ventana principal
+let win = null;
+
+//-- Arrancar el servidor HTTP+Socket.IO como en la práctica 3
+require('./chat-server.js');  // Importa el servidor como módulo externo
 
 console.log("Arrancando electron...");
 
-//-- Variable para acceder a la ventana principal
-//-- Se pone aquí para que sea global al módulo principal
-let win = null;
-
-//-- Punto de entrada. En cuanto electron está listo,
-//-- ejecuta esta función
+//-- Cuando Electron esté listo
 electron.app.on('ready', () => {
-    console.log("Evento Ready!");
+  console.log("Evento Ready!");
 
-    //-- Crear la ventana principal de nuestra aplicación
-    win = new electron.BrowserWindow({
-        width: 600,   //-- Anchura 
-        height: 600,  //-- Altura
-
-        //-- Permitir que la ventana tenga ACCESO AL SISTEMA
-        webPreferences: {
-          nodeIntegration: true,
-          contextIsolation: false
-        }
-    });
-
-  //-- En la parte superior se nos ha creado el menu
-  //-- por defecto
-  //-- Si lo queremos quitar, hay que añadir esta línea
-  //win.setMenuBarVisibility(false)
-
-  //-- Cargar contenido web en la ventana
-  //-- La ventana es en realidad.... ¡un navegador!
-  //win.loadURL('https://www.urjc.es/etsit');
-
-  //-- Cargar interfaz gráfica en HTML
-  win.loadFile("index.html");
-
-  //-- Esperar a que la página se cargue y se muestre
-  //-- y luego enviar el mensaje al proceso de renderizado para que 
-  //-- lo saque por la interfaz gráfica
-  win.on('ready-to-show', () => {
-    win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
+  // Crear la ventana
+  win = new electron.BrowserWindow({
+    width: 800,
+    height: 600,
+    webPreferences: {
+      nodeIntegration: true,   // necesario para acceder a Node desde el renderer
+      contextIsolation: false, // necesario para usar ipcRenderer directamente
+    },
   });
 
-  //-- Enviar un mensaje al proceso de renderizado para que lo saque
-  //-- por la interfaz gráfica
-  win.webContents.send('print', "MENSAJE ENVIADO DESDE PROCESO MAIN");
+  //win.setMenuBarVisibility(false); // opcional
 
+  win.loadFile("index.html");
+
+  // Esperar a que la ventana esté lista
+  win.webContents.on('did-finish-load', () => {
+    // Obtener info del sistema
+    const info = {
+      node: process.versions.node,
+      chrome: process.versions.chrome,
+      electron: process.versions.electron,
+      ip: ip.address()
+    };
+
+    // Enviar al renderer
+    win.webContents.send('system-info', info);
+  });
 });
 
-
-//-- Esperar a recibir los mensajes de botón apretado (Test) del proceso de 
-//-- renderizado. Al recibirlos se escribe una cadena en la consola
+//-- Comunicación desde el renderer al proceso principal
 electron.ipcMain.handle('test', (event, msg) => {
-  console.log("-> Mensaje: " + msg);
+  console.log("-> Mensaje de test recibido desde renderer:", msg);
 });
-

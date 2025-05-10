@@ -1,5 +1,5 @@
 {
-    "name": "mi-electron-chat",
+    "name": "chat-electron",
     "description": "Chat privado de la URJC con Electron",
     "version": "0.1.0",
     "main": "main.js",
@@ -15,7 +15,7 @@
         "postinstall": "electron-builder install-app-deps"
     },
     "build": {
-        "appId": "mi-electron-app-1-id",
+        "appId": "mi-electron-chat-id",
         "linux": {
             "target": [
                 "AppImage"
@@ -26,5 +26,11 @@
     "devDependencies": {
         "electron": "^30.0.1",
         "electron-builder": "^24.13.3"
+    },
+    "dependencies": {
+        "colors": "^1.4.0",
+        "express": "^5.1.0",
+        "ip": "^2.0.1",
+        "socket.io": "^4.8.1"
     }
 }
