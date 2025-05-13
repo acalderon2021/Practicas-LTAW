@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Panel del Servidor de Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="renderer.css" />
+</head>
+<body>
+  <header>
+    <img src="logo-urjc.png" alt="Logo URJC" />
+    <h1>Panel del servidor de chat URJC</h1>
+  </header>
+
+  <main>
+    <aside id="leftPanel">
+      <h3>📋 Información del sistema</h3>
+      <p><strong>Versión de Node:</strong> <span id="node">-</span></p>
+      <p><strong>Versión de Electron:</strong> <span id="electron">-</span></p>
+      <p><strong>Versión de Chrome:</strong> <span id="chrome">-</span></p>
+      <p><strong>Dirección IP:</strong> <span id="ip">-</span>:8080</p>
+      
+      <section id="qrSection">
+        <h4>📱 Escanea para conectarte:</h4>
+        <canvas id="qrCanvas"></canvas>
+        <p id="connectionURL" style="font-style: italic; font-size: 14px;"></p>
+      </section>
+  
+      <button id="boton-test">🧪 Enviar mensaje de prueba</button>
+    </aside>
+  
+    <section id="chatContainer">
+      <h2>📨 Mensajes del chat</h2>
+      <div id="mensajes"></div>
+    </section>
+  
+    <aside id="rightPanel">
+      <h4>👥 Usuarios conectados: <span id="users">0</span></h4>
+      <ul id="user_list"></ul>
+    </aside>
+  </main>
+
+  <script src="renderer.js"></script>
+</body>
+</html>
