@@ -121,5 +121,6 @@ io.on('connect', (socket) => {
   });
 });
 
-server.listen(PUERTO);
-console.log("Servidor escuchando en el puerto " + PUERTO);
+server.listen(PUERTO, '0.0.0.0', () => {
+  console.log(`Servidor escuchando en el puerto ${PUERTO}`);
+});

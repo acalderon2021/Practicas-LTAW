@@ -1,50 +1,45 @@
 //-- Cargar módulos
-const electron = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
 const ip = require('ip');
 
-//-- Variable global para la ventana principal
+//-- Arrancar el servidor HTTP+Socket.IO
+require('./chat-server.js');  // Servidor arrancado como en práctica 3
+
 let win = null;
 
-//-- Arrancar el servidor HTTP+Socket.IO como en la práctica 3
-require('./chat-server.js');  // Importa el servidor como módulo externo
+console.log("Arrancando Electron...");
 
-console.log("Arrancando electron...");
-
-//-- Cuando Electron esté listo
-electron.app.on('ready', () => {
+app.on('ready', () => {
   console.log("Evento Ready!");
 
-  // Crear la ventana
-  win = new electron.BrowserWindow({
+  // Crear la ventana principal
+  win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
-      nodeIntegration: true,   // necesario para acceder a Node desde el renderer
-      contextIsolation: false, // necesario para usar ipcRenderer directamente
+      nodeIntegration: true,   // Necesario para usar require en el renderer
+      contextIsolation: false, // Permite ipcRenderer directamente
     },
   });
 
-  //win.setMenuBarVisibility(false); // opcional
-
+  // Cargar la interfaz HTML
   win.loadFile("index.html");
 
-  // Esperar a que la ventana esté lista
+  // Enviar info del sistema una vez que la ventana está lista
   win.webContents.on('did-finish-load', () => {
-    // Obtener info del sistema
     const info = {
       node: process.versions.node,
       chrome: process.versions.chrome,
       electron: process.versions.electron,
-      ip: ip.address()
+      ip: ip.address(),
     };
 
-    // Enviar al renderer
     win.webContents.send('system-info', info);
   });
 });
 
-//-- Comunicación desde el renderer al proceso principal
-electron.ipcMain.handle('test', (event, msg) => {
+//-- Comunicación opcional desde el renderer
+ipcMain.handle('test', (event, msg) => {
   console.log("-> Mensaje de test recibido desde renderer:", msg);
 });
