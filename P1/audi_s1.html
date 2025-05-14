@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venta de Coche</title>
     <link rel="stylesheet" href="styles.css">
+    <!--Estilo para el visor de imágenes-->
     <style>
         .container {
             display: flex;
@@ -74,19 +75,21 @@
 </head>
 <body>
     <header>
-        <img src="audi-letras.png" alt="Logo Audi">
+        <a href="index.html">
+            <img src="visuales/audi-letras.png" alt="Logo Audi">
+        </a>
         <div class="texto">Venta de Coches: Audi S1 Grupo B</div>
     </header>
     <div class="container">
         <div class="images">
-            <img src="s1_1.jpg" alt="Imagen 1" class="active">
-            <img src="s1_2.jpg" alt="Imagen 2">
-            <img src="s1_3.jpg" alt="Imagen 3">
-            <img src="s1_4.jpg" alt="Imagen 4">
-            <img src="s1_5.jpg" alt="Imagen 5">
-            <img src="s1_6.jpg" alt="Imagen 6">
-            <img src="s1_7.jpg" alt="Imagen 7">
-            <img src="s1_8.jpg" alt="Imagen 8">
+            <img src="visuales/s1/s1_1.jpg" alt="Imagen 1" class="active">
+            <img src="visuales/s1/s1_2.jpg" alt="Imagen 2">
+            <img src="visuales/s1/s1_3.jpg" alt="Imagen 3">
+            <img src="visuales/s1/s1_4.jpg" alt="Imagen 4">
+            <img src="visuales/s1/s1_5.jpg" alt="Imagen 5">
+            <img src="visuales/s1/s1_6.jpg" alt="Imagen 6">
+            <img src="visuales/s1/s1_7.jpg" alt="Imagen 7">
+            <img src="visuales/s1/s1_8.jpg" alt="Imagen 8">
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
         </div>
@@ -108,7 +111,13 @@
             </div>
         </div>
     </div>
-
+    <div style="text-align: center; margin: 30px;">
+        <a href="index.html">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #990000; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                ⬅ Volver a la página principal
+            </button>
+        </a>
+    </div>
     <script>
         let currentIndex = 0;
         const images = document.querySelectorAll('.images img');

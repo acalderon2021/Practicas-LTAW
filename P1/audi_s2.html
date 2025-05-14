@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venta de Coche</title>
     <link rel="stylesheet" href="styles.css">
+    <!--Estilo para el visor de imágenes-->
     <style>
         .container {
             display: flex;
@@ -74,25 +75,20 @@
 </head>
 <body>
     <header>
-        <img src="audi-letras.png" alt="Logo Audi">
+        <a href="index.html">
+            <img src="visuales/audi-letras.png" alt="Logo Audi">
+        </a>
         <div class="texto">Venta de Coches: Audi S2</div>
     </header>
     <div class="container">
         <div class="images">
-            <img src="s2_1.jpg" alt="Imagen 1" class="active">
-            <img src="s2_2.jpg" alt="Imagen 2">
-            <img src="s2_3.jpg" alt="Imagen 3">
-            <img src="s2_4.jpg" alt="Imagen 4">
-            <img src="s2_5.jpg" alt="Imagen 5">
-            <img src="s2_6.jpg" alt="Imagen 6">
-            <img src="s2_7.jpg" alt="Imagen 7">
-            <img src="s2_8.jpg" alt="Imagen 8">
-            <img src="s2_9.jpg" alt="Imagen 9">
-            <img src="s2_10.jpg" alt="Imagen 10">
-            <img src="s2_11.jpg" alt="Imagen 11">
-            <img src="s2_12.jpg" alt="Imagen 12">
-            <img src="s2_13.jpg" alt="Imagen 13">
-            <img src="s2_14.jpg" alt="Imagen 14">
+            <img src="visuales/s2/s2-1.jpeg" alt="Imagen 1" class="active">
+            <img src="visuales/s2/s2-2.jpeg" alt="Imagen 2">
+            <img src="visuales/s2/s2-3.jpeg" alt="Imagen 3">
+            <img src="visuales/s2/s2-4.jpeg" alt="Imagen 4">
+            <img src="visuales/s2/s2-5.jpeg" alt="Imagen 5">
+            <img src="visuales/s2/s2-6.jpeg" alt="Imagen 6">
+            <img src="visuales/s2/s2-7.jpeg" alt="Imagen 7">
             <button class="prev">&#10094;</button>
             <button class="next">&#10095;</button>
         </div>
@@ -114,7 +110,13 @@
             </div>
         </div>
     </div>
-
+    <div style="text-align: center; margin: 30px;">
+        <a href="index.html">
+            <button style="padding: 10px 20px; font-size: 16px; background-color: #990000; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                ⬅ Volver a la página principal
+            </button>
+        </a>
+    </div>
     <script>
         let currentIndex = 0;
         const images = document.querySelectorAll('.images img');
