@@ -104,7 +104,7 @@ io.on('connect', (socket) => {
           socket.send("❌ Comando no reconocido. Usa /help para ver opciones.");
       }
 
-      return; // No continuar con el resto
+      return;
     }
 
     // Mejora: menciones con @
