@@ -19,3 +19,4 @@ console.log("Productos en la tienda: " + tienda.length);
 tienda.forEach((element, index)=>{
   console.log("Producto: " + (index + 1) + ": " + element["nombre"]);
 });
+

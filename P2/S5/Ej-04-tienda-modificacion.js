@@ -14,7 +14,7 @@ const  tienda_json = fs.readFileSync(FICHERO_JSON, 'utf8');
 const tienda = JSON.parse(tienda_json);
 
 //-- Modificar el nombre del producto 2
-tienda[1]["nombre"] = "IceBeraker"
+tienda[1]["nombre"] = "IceBreaker"
 
 //-- Mostrar informacion sobre la tienda
 console.log("Productos en la tienda: " + tienda.length);
@@ -31,3 +31,5 @@ let myJSON = JSON.stringify(tienda);
 fs.writeFileSync(FICHERO_JSON_OUT, myJSON);
 
 console.log("Información guardada en fichero: " + FICHERO_JSON_OUT);
+
+
