@@ -1,7 +1,7 @@
 const http = require('http');
 const fs = require('fs');
 
-const port = 8080;
+const port = 8001;
 const tienda = "index.html";
 const styles = "styles.css"; 
 const errorPage = "error.html"; 
