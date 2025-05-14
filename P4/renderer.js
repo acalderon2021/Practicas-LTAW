@@ -24,7 +24,7 @@ window.electronAPI.onUserCount((data) => {
   });
 });
 
-// Mostrar mensajes con el nombre del usuario en color
+// Mostrar mensajes 
 window.electronAPI.onNewMessage((msg) => {
   const div = document.getElementById('mensajes');
   const p = document.createElement('p');
@@ -34,7 +34,7 @@ window.electronAPI.onNewMessage((msg) => {
     const [_, nick, texto] = match;
     p.innerHTML = `<strong style="color: #1e90ff">${nick}:</strong> ${texto}`;
   } else {
-    p.textContent = msg; // sistema, entradas, desconexiones, etc.
+    p.textContent = msg;
     p.style.color = "#666";
   }
 

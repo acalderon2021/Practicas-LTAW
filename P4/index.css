@@ -91,12 +91,12 @@ ul {
 
 .chat-message {
   margin: 5px 0;
-  color: inherit; /* tomará el color del texto configurado */
+  color: inherit;
 }
 
 .username {
   font-weight: bold;
-  color: #ff1e1e; /* puede cambiar dinámicamente con JS */
+  color: #ff1e1e;
 }
 
 .message-text {
